@@ -10,7 +10,7 @@ import Work from './pages/Work';
 const App = () => {
   return (
     <BrowserRouter>
-      <div className="bg-black text-white min-h-screen flex flex-col px-[200px]">
+      <div className="bg-black text-white min-h-screen flex flex-col">
         
         {/* Navbar always shown at the top */}
         <Navbar />

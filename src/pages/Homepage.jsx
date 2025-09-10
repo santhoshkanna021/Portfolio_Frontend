@@ -28,7 +28,7 @@ const Homepage = () => {
 
       {/* Header Section */}
       <header className="mb-6">
-        <h1 className="text-[70px] font-extrabold text-[#BE5204] mb-2">
+        <h1 className="text-4xl sm:text-4xl md:text-4xl  font-extrabold text-[#BE5204] mb-2">
           Santhoshkanna
         </h1>
 
