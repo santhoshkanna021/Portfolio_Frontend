@@ -1,34 +1,27 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Homepage from './pages/Homepage';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Work from './pages/Work';
+import Layout from './pages/Layout';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      { path: "/", element: <Homepage /> },
+      { path: "/About", element: <About /> },
+      { path: "/Contact", element: <Contact /> },
+      { path: "/Work", element: <Work /> },
+    ]
+  }
+]);
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <div className="bg-black text-white min-h-screen flex flex-col">
-        
-        {/* Navbar always shown at the top */}
-        <Navbar />
-
-        {/* Main content */}
-        <main className="flex-grow p-4">
-          <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/About" element={<About />} />
-            <Route path="/Contact" element={<Contact />} />
-            <Route path="/Work" element={<Work />} />
-          </Routes>
-        </main>
-
-        {/* Footer always shown at the bottom */}
-        <Footer />
-      </div>
-    </BrowserRouter>
+    <RouterProvider router={router} />
   );
 };
 

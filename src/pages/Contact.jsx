@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from "framer-motion";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -15,18 +16,32 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
-    // Here you can add API calls or email sending logic
     alert('Message sent!');
     setFormData({ name: '', email: '', subject: '', message: '' });
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  };
+
+  const buttonVariants = {
+    hover: { scale: 1.05, transition: { duration: 0.2 } }
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center p-6">
-      <form onSubmit={handleSubmit} className="w-full max-w-lg  p-8 rounded-lg shadow-lg">
+    <div className="min-h-screen flex items-center justify-center p-6 bg-black">
+      <motion.form 
+        onSubmit={handleSubmit} 
+        className="w-full max-w-lg p-8 rounded-lg shadow-lg bg-gray-900"
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
         <h1 className="text-3xl text-[#BE5204] font-bold mb-6 text-center">Contact Me</h1>
 
         <div className="mb-4">
-          <label className="block mb-2">Name</label>
+          <label className="block mb-2 text-gray-300">Name</label>
           <input 
             type="text" 
             name="name"
@@ -39,7 +54,7 @@ const Contact = () => {
         </div>
 
         <div className="mb-4">
-          <label className="block mb-2">Email</label>
+          <label className="block mb-2 text-gray-300">Email</label>
           <input 
             type="email" 
             name="email"
@@ -52,7 +67,7 @@ const Contact = () => {
         </div>
 
         <div className="mb-4">
-          <label className="block mb-2">Subject</label>
+          <label className="block mb-2 text-gray-300">Subject</label>
           <input 
             type="text" 
             name="subject"
@@ -65,7 +80,7 @@ const Contact = () => {
         </div>
 
         <div className="mb-4">
-          <label className="block mb-2">Message</label>
+          <label className="block mb-2 text-gray-300">Message</label>
           <textarea 
             name="message"
             value={formData.message}
@@ -77,13 +92,15 @@ const Contact = () => {
           ></textarea>
         </div>
 
-        <button 
+        <motion.button 
           type="submit"
-          className="w-1/2 bg-[#BE5204] text-white py-3 rounded-3xl font-semibold transition duration-300"
+          className="w-1/2 bg-[#BE5204] text-white py-3 rounded-3xl font-semibold transition duration-300 mx-auto block"
+          variants={buttonVariants}
+          whileHover="hover"
         >
           Send Message
-        </button>
-      </form>
+        </motion.button>
+      </motion.form>
     </div>
   );
 };

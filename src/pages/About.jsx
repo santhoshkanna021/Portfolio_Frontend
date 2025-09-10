@@ -1,8 +1,19 @@
 import React from 'react';
+import { motion } from "framer-motion";
 
 const About = () => {
+  const containerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  };
+
   return (
-    <div className="min-h-screen p-6 py-20 bg-black text-white">
+    <motion.div 
+      className="flex flex-col items-center min-h-screen p-6 py-20 bg-black text-white"
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+    >
       
       {/* About Me Section */}
       <section className="mb-12">
@@ -58,7 +69,7 @@ const About = () => {
           <li><strong>Data Analytics & Visualization Job Simulation</strong> – Accenture</li>
         </ul>
       </section>
-    </div>
+    </motion.div>
   );
 };
 
