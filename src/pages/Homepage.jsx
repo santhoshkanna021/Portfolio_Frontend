@@ -55,7 +55,7 @@ const Homepage = () => {
 
         {/* Title and Button */}
         <div className="flex items-center justify-between w-full px-4 mb-8 ">
-          <h1 className="text-[30px] font-extrabold  mb-2 text-[#BE5204]">
+          <h1 className="text-[30px] font-extrabold   mb-2 text-[#BE5204]">
             Latest Projects
           </h1>
           <button className="text-gray-400 border border-white px-4 py-2 rounded hover:bg-[#BE5204] transition">
@@ -64,15 +64,15 @@ const Homepage = () => {
         </div>
 
         {/* Project List */}
-<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 px-4">
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 px-4 py-5">
   {data.map((project, index) => (
-    <div key={index} className=" rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
+    <div key={index} className=" rounded-2xl overflow-hidden shadow-[#BE5204] hover:shadow-xl transition">
       {/* Make image cover the card */}
       <div className="w-full h-30 overflow-hidden">
         <img
           src={project.image}
           alt={project.title}
-          className="w-full h-full object-contain"
+          className="w-full h-full object-cover"
         />
       </div>
       <div className="p-4">
