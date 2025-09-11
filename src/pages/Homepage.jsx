@@ -4,8 +4,10 @@ import { motion } from "framer-motion";
 import Image1 from "../assets/Projects 1.png";
 import Image2 from "../assets/Projects 2.png";
 import Image3 from "../assets/Projects 3.png";
-
+import { Link } from 'react-router-dom';
 const Homepage = () => {
+
+  
   const data = [
     {
       image: Image1,
@@ -82,9 +84,9 @@ const Homepage = () => {
       >
         <div className="flex flex-col sm:flex-row sm:justify-between items-start mb-8">
           <h2 className="text-4xl font-extrabold text-[#BE5204] mb-4 sm:mb-0">Latest Projects</h2>
-          <button className="text-gray-400 border border-white px-4 py-2 rounded hover:bg-[#BE5204] transition-colors">
-            View all
-          </button>
+          <Link to="/Work" className="text-gray-400 border border-white px-4 py-2 rounded hover:bg-[#BE5204] transition-colors">
+      View all
+    </Link>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
