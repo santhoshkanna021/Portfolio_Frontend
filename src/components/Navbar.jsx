@@ -4,7 +4,7 @@ import { FaLinkedinIn } from "react-icons/fa6";
 import { FiGithub } from "react-icons/fi";
 import { MdMarkEmailUnread } from "react-icons/md";
 import { FaConnectdevelop, FaBars, FaTimes } from "react-icons/fa";
-import { m as Motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,6 +23,7 @@ const Navbar = () => {
 
   return (
     <div className="flex items-center justify-between p-5 bg-black text-gray-400 sticky top-0 z-50">
+      
       {/* Left Section */}
       <div className="flex items-center gap-4">
         <NavLink to="/" className="hover:text-[#BE5204]">
@@ -55,24 +56,35 @@ const Navbar = () => {
 
         {/* Mobile Toggle Button */}
         <div className="sm:hidden">
-          <button onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+          <button onClick={() => setIsOpen(true)}>
+            <FaBars size={24} />
           </button>
         </div>
       </div>
 
-      {/* Mobile Sliding Menu with Framer Motion */}
+      {/* Mobile Sliding Menu */}
       <AnimatePresence>
         {isOpen && (
-          <Motion.div
+          <motion.div
             initial="hidden"
             animate="visible"
             exit="exit"
             variants={menuVariants}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="fixed top-0 right-0 h-full w-64 bg-black text-center p-4 z-40"
+            className="fixed top-0 right-0 h-full w-64 bg-black text-white p-4 z-40"
           >
-            <nav className="flex flex-col py-4 space-y-4">
+            {/* Close Button at Top */}
+            <div className="flex justify-end mb-4">
+              <button
+                onClick={() => setIsOpen(false)}
+                className="text-white hover:text-[#BE5204] p-2 bg-gray-800 rounded-full"
+              >
+                <FaTimes size={24} />
+              </button>
+            </div>
+
+            {/* Navigation Links */}
+            <nav className="flex flex-col space-y-4">
               {links.map((link) => (
                 <NavLink
                   key={link.name}
@@ -83,19 +95,21 @@ const Navbar = () => {
                   {link.name}
                 </NavLink>
               ))}
-              <div className="flex justify-center space-x-4 pt-4 border-t border-gray-700">
-                <button className="hover:text-[#BE5204]" onClick={() => window.open("https://github.com/santhoshkanna021", "_blank")}>
-                  <FiGithub size={24} />
-                </button>
-                <button className="hover:text-[#BE5204]" onClick={() => window.open("https://linkedin.com/in/santhoshkanna021/", "_blank")}>
-                  <FaLinkedinIn size={24} />
-                </button>
-                <button className="hover:text-[#BE5204]" onClick={() => window.location = "mailto:santhoshkannar802@gmail.com"}>
-                  <MdMarkEmailUnread size={24} />
-                </button>
-              </div>
             </nav>
-          </Motion.div>
+
+            {/* Social Icons */}
+            <div className="flex justify-center space-x-4 pt-6 border-t border-gray-700 mt-6">
+              <button className="hover:text-[#BE5204]" onClick={() => window.open("https://github.com/santhoshkanna021", "_blank")}>
+                <FiGithub size={24} />
+              </button>
+              <button className="hover:text-[#BE5204]" onClick={() => window.open("https://linkedin.com/in/santhoshkanna021/", "_blank")}>
+                <FaLinkedinIn size={24} />
+              </button>
+              <button className="hover:text-[#BE5204]" onClick={() => window.location = "mailto:santhoshkannar802@gmail.com"}>
+                <MdMarkEmailUnread size={24} />
+              </button>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </div>

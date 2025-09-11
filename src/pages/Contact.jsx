@@ -33,7 +33,7 @@ const Contact = () => {
     <div className="min-h-screen flex items-center justify-center p-6 bg-black">
       <motion.form 
         onSubmit={handleSubmit} 
-        className="w-full max-w-lg p-8 rounded-lg shadow-lg bg-gray-900"
+        className="w-full max-w-lg p-8 rounded-lg shadow-lg bg-black"
         initial="hidden"
         animate="visible"
         variants={containerVariants}

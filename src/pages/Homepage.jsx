@@ -44,7 +44,7 @@ const Homepage = () => {
         animate="visible"
         variants={containerVariants}
       >
-        <h1 className="text-3xl sm:text-6xl font-extrabold text-[#BE5204] mb-4">
+        <h1 className="text-4xl sm:text-6xl font-extrabold text-[#BE5204] mb-4">
           Santhoshkanna
         </h1>
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-start gap-4">
