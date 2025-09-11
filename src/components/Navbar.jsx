@@ -12,7 +12,7 @@ const Navbar = () => {
   const links = [
     { name: "About", path: "/About" },
     { name: "Work", path: "/Work" },
-    { name: "Contact", path: "/Contact" },
+    // { name: "Contact", path: "/Contact" },
   ];
 
   const menuVariants = {

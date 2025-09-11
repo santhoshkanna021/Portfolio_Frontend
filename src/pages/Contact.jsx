@@ -9,15 +9,37 @@ const Contact = () => {
     message: ''
   });
 
+  const [loading, setLoading] = useState(false);
+
   const handleChange = (e) => {
     setFormData({...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Message sent!');
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setLoading(true);
+
+    try {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbz9sEnAVWdjYRRf_Do3c_R4z133uuVFJZ5kD5I9DZfyhC0qrhhJn8v-GglVyE8gyC1d/exec', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+
+      const result = await response.json();
+
+      if (result.status === 'success') {
+        alert('Message sent!');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        alert('Failed to send message: ' + result.message);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const containerVariants = {
@@ -94,11 +116,12 @@ const Contact = () => {
 
         <motion.button 
           type="submit"
-          className="w-1/2 bg-[#BE5204] text-white py-3 rounded-3xl font-semibold transition duration-300 mx-auto block"
+          className={`w-1/2 bg-[#BE5204] text-white py-3 rounded-3xl font-semibold transition duration-300 mx-auto block ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
           variants={buttonVariants}
-          whileHover="hover"
+          whileHover={!loading ? "hover" : ""}
+          disabled={loading}
         >
-          Send Message
+          {loading ? 'Sending...' : 'Send Message'}
         </motion.button>
       </motion.form>
     </div>

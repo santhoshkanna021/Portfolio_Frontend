@@ -32,9 +32,9 @@ const Footer = () => {
             <NavLink to="/Work" className="hover:text-[#BE5204] text-sm">
               Work
             </NavLink>
-            <NavLink to="/Contact" className="hover:text-[#BE5204] text-sm">
+            {/* <NavLink to="/Contact" className="hover:text-[#BE5204] text-sm">
               Contact
-            </NavLink>
+            </NavLink> */}
           </nav>
 
           {/* Social Icons */}

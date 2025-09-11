@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 import Image1 from "../assets/Projects 1.png";
 import Image2 from "../assets/Projects 2.png";
 import Image3 from "../assets/Projects 3.png";
-import Image4 from "../assets/Projects 1.png"; // Use same temporarily
-import Image5 from "../assets/Projects 2.png";
-import Image6 from "../assets/Projects 3.png";
+import Image4 from "../assets/Projects 4.jpeg"; // Use same temporarily
+import Image5 from "../assets/Projects 5.jpeg";
+import Image6 from "../assets/Projects 6.png";
 
 const Work = () => {
   const data = [
@@ -21,23 +21,23 @@ const Work = () => {
     },
     {
       image: Image3,
-      title: "Travel",
+      title: "Travel Booking",
       subtitle: "A responsive travel booking app to explore destinations, plan trips, and manage itineraries."
     },
     {
       image: Image4,
-      title: "E-Commerce Platform",
-      subtitle: "A scalable online marketplace enabling users to buy and sell products with secure payment integrations."
+      title: "Amazon Prime User Behavior Analysis",
+      subtitle: "Analyzed subscription trends, content consumption patterns, and viewer engagement using Python, Pandas, and Tableau to help optimize content recommendations and improve user experience."
     },
     {
       image: Image5,
-      title: "Fitness Tracker",
-      subtitle: "A mobile-friendly app to track workouts, diet, and health metrics with personalized recommendations."
+      title: "Airline Passenger Analysis",
+      subtitle: "Analyzed passenger traffic, booking trends, and flight delays using Python and Power BI to optimize airline scheduling and enhance customer satisfaction."
     },
     {
       image: Image6,
-      title: "Education Portal",
-      subtitle: "An interactive platform offering courses, quizzes, and learning resources for students and professionals."
+      title: "Real Estate Website",
+      subtitle: "A full-stack application built with MongoDB, Express.js, React, and Node.js to help users create, manage, and track their daily tasks efficiently."
     }
   ];
 
@@ -131,8 +131,8 @@ const Work = () => {
                 <img src={project.image} alt={project.title} className="w-full h-full object-cover"/>
               </div>
               <div className="p-4">
-                <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">{project.title}</h3>
-                <p className="text-gray-400 text-sm sm:text-base">{project.subtitle}</p>
+                <h3 className="text-xl sm:text-lg font-bold text-white mb-2">{project.title}</h3>
+                <p className="text-gray-400 text-sm sm:text-sm">{project.subtitle}</p>
               </div>
             </motion.div>
           ))}
